@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>ION Faucet Proxy</title>
+  <title>ION Testnet Faucet</title>
   <style>
     body {
       background: linear-gradient(to right, #1f1f2f, #151525);
@@ -71,7 +71,7 @@
   </style>
 </head>
 <body>
-  <h1>ION Faucet Proxy</h1>
+  <h1>ION Testnet Faucet</h1>
   <input type="text" id="wallet" placeholder="ION Testnet Cüzdan Adresi" />
   <br />
   <button onclick="claim()">Claim</button>
@@ -102,7 +102,7 @@
 
         if (data.message && data.message.includes("received")) {
           result.className = 'success';
-          result.innerText = "✅ Token isteği gönderildi!";
+          result.innerText = "✅ 10 ION cüzdana gönderildi!";
         } else {
           result.className = 'error';
           result.innerText = "❌ Hata: " + (data.message || JSON.stringify(data));
