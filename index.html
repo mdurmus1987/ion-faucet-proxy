@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ION Testnet Faucet</title>
   <style>
     body {
@@ -14,32 +15,31 @@
       justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
-      padding-top: 20px;
+      padding: 20px 10px;
     }
 
     .nav {
-      background-color: #ffffff;
-      padding: 15px;
+      background-color: #fff;
+      padding: 10px;
       border-radius: 12px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
       margin-bottom: 25px;
+      max-width: 95%;
     }
 
     .nav a {
       text-decoration: none;
       color: #fff;
       background-color: #000;
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 8px;
       font-weight: 500;
+      font-size: 14px;
       transition: 0.3s ease;
-    }
-
-    .nav a:hover {
-      background-color: #333;
+      text-align: center;
     }
 
     .logo {
@@ -52,6 +52,7 @@
       margin-bottom: 10px;
       font-size: 2rem;
       color: #00e0ff;
+      text-align: center;
     }
 
     input {
@@ -102,22 +103,43 @@
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 30px;
       text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.8;
+      font-size: 14px;
+      color: #ccc;
     }
 
     .footer a {
       color: #00e0ff;
       text-decoration: none;
-      font-weight: bold;
+    }
+
+    @media screen and (max-width: 480px) {
+      .nav a {
+        flex: 1 1 calc(50% - 10px);
+        font-size: 13px;
+        padding: 10px 8px;
+      }
+
+      input {
+        width: 90% !important;
+      }
+
+      button {
+        width: 60%;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .logo {
+        width: 60px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Üst Menü -->
   <div class="nav">
     <a href="https://chromewebstore.google.com/detail/hfajfpbjlmembfdlhakjmefnbhjddofb?utm_source=item-share-cb" target="_blank">ION Wallet</a>
     <a href="https://explorer.testnet.ice.io/" target="_blank">Testnet Explorer</a>
@@ -125,26 +147,19 @@
     <a href="https://bridge.ice.io/" target="_blank">ION Bridge</a>
   </div>
 
-  <!-- Logo -->
   <img src="https://ice.io/wp-content/uploads/2024/04/ion-favicon.png" alt="ION Logo" class="logo" />
-
-  <!-- Başlık -->
   <h1>ION Testnet Faucet</h1>
-
-  <!-- Giriş alanı ve buton -->
   <input type="text" id="wallet" placeholder="ION Testnet Cüzdan Adresi" />
   <br />
   <button onclick="claim()">Claim</button>
   <div id="result"></div>
 
-  <!-- Uyarı -->
-  <p style="margin-top: 15px; color: #ffcc00;">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</p>
+  <p style="margin-top: 20px; color: #ffcc00;">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</p>
 
-  <!-- Alt Bilgiler -->
   <div class="footer">
-    🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a><br />
-    🚀 Powered by <strong>IONTech</strong><br />
-    ❄️ Ice Open Network katkılarıyla
+    <p>🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a></p>
+    <p>🚀 Powered by <strong>IONTech</strong></p>
+    <p>❄️ Ice Open Network katkılarıyla</p>
   </div>
 
   <script>
