@@ -210,7 +210,7 @@
     async function loadMarketData() {
       const el = document.getElementById("market-data");
       try {
-        const res = await fetch("https://api.coingecko.com/api/v3/coins/ice-open-network");
+        const res = await fetch("https://api.coingecko.com/api/v3/coins/ice");
         const data = await res.json();
         const price = data.market_data.current_price.usd.toFixed(4);
         const supply = data.market_data.circulating_supply.toLocaleString();
