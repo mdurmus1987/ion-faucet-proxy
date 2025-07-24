@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ION Faucet Proxy Test</title>
+</head>
+<body style="font-family:sans-serif; text-align:center; margin-top:100px; background:#121212; color:white;">
+  <h1>Ice Faucet (Proxy üzerinden)</h1>
+  <input type="text" id="wallet" placeholder="ION Testnet Address" style="padding:10px; width:300px;"/>
+  <br><br>
+  <button onclick="claim()">Claim</button>
+  <p id="result" style="margin-top:20px;"></p>
+
+  <script>
+    async function claim() {
+      const wallet = document.getElementById("wallet").value.trim();
+      const result = document.getElementById("result");
+      result.innerText = "Bekleniyor...";
+
+      try {
+        const response = await fetch("http://localhost:3000/claim", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ address: wallet })
+        });
+        const data = await response.json();
+        result.innerText = "Sonuç: " + JSON.stringify(data);
+      } catch (err) {
+        result.innerText = "Hata: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>

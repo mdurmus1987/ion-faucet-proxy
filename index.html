@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>ION Faucet Proxy</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1f2f, #151525);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: #00e0ff;
+    }
+
+    input {
+      padding: 10px;
+      width: 300px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 30px;
+      font-size: 16px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #00b7cc;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      min-width: 280px;
+    }
+
+    .success {
+      background-color: #1b3824;
+      color: #3efc78;
+    }
+
+    .error {
+      background-color: #3a1e1e;
+      color: #ff6565;
+    }
+
+    .loading {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>ION Faucet Proxy</h1>
+  <input type="text" id="wallet" placeholder="ION Testnet Cüzdan Adresi" />
+  <br />
+  <button onclick="claim()">Claim</button>
+  <div id="result"></div>
+
+  <script>
+    async function claim() {
+      const wallet = document.getElementById("wallet").value.trim();
+      const result = document.getElementById("result");
+      result.className = 'loading';
+
+      if (!wallet) {
+        result.className = 'error';
+        result.innerText = "⚠️ Lütfen geçerli bir cüzdan adresi girin.";
+        return;
+      }
+
+      result.innerText = "⏳ İşleniyor...";
+
+      try {
+        const response = await fetch("http://localhost:3000/claim", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ address: wallet })
+        });
+
+        const data = await response.json();
+
+        if (data.message && data.message.includes("received")) {
+          result.className = 'success';
+          result.innerText = "✅ Token isteği gönderildi!";
+        } else {
+          result.className = 'error';
+          result.innerText = "❌ Hata: " + (data.message || JSON.stringify(data));
+        }
+      } catch (err) {
+        result.className = 'error';
+        result.innerText = "❌ Sunucu hatası: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
