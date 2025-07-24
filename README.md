@@ -5,3 +5,5 @@ To purchase ION Test coins, you can visit the website we have prepared and reque
 You can make a request at 24 hour intervals. 
 
 To visit: https://ion-testnet-faucet.onrender.com/
+
+Prepared by: Online+ Beta Tester IONTech
