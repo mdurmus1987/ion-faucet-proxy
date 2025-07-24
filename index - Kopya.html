@@ -114,6 +114,12 @@
       text-decoration: none;
     }
 
+    #market {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #a0dfff;
+    }
+
     @media screen and (max-width: 480px) {
       .nav a {
         flex: 1 1 calc(50% - 10px);
@@ -153,8 +159,9 @@
   <br />
   <button onclick="claim()">Claim</button>
   <div id="result"></div>
+  <p style="margin-top: 10px; color: #ffcc00;">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir. Test coinlerinin değeri yoktur. Test amaçlı kullanım içindir.</p>
 
-  <p style="margin-top: 20px; color: #ffcc00;">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</p>
+  <div id="market">📡 Piyasa verileri yükleniyor...</div>
 
   <div class="footer">
     <p>🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a></p>
@@ -197,6 +204,22 @@
         result.innerText = "❌ Sunucu hatası: " + err.message;
       }
     }
+
+    async function loadMarketData() {
+      const el = document.getElementById("market");
+      try {
+        const res = await fetch("https://api.coingecko.com/api/v3/coins/ice");
+        const data = await res.json();
+        const price = data.market_data.current_price.usd;
+        const supply = data.market_data.circulating_supply;
+        const total = data.market_data.total_supply;
+        el.innerText = `💰 Fiyat: $${price} | 🔄 Dolaşım: ${Math.round(supply).toLocaleString()} | 🧊 Toplam Arz: ${Math.round(total).toLocaleString()}`;
+      } catch {
+        el.innerText = "📡 Piyasa verileri alınamadı.";
+      }
+    }
+
+    loadMarketData();
   </script>
 </body>
 </html>
