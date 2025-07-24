@@ -12,11 +12,36 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
+      padding-top: 80px;
+    }
+
+    .top-links {
+      position: fixed;
+      top: 10px;
+      left: 0;
+      right: 0;
       text-align: center;
-      padding: 20px;
+      z-index: 100;
+    }
+
+    .top-links a {
+      display: inline-block;
+      margin: 0 6px;
+      padding: 8px 14px;
+      background-color: #00e0ff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 13px;
+      transition: background 0.3s ease;
+    }
+
+    .top-links a:hover {
+      background-color: #00b7cc;
     }
 
     .logo {
@@ -33,8 +58,7 @@
 
     input {
       padding: 10px;
-      width: 90%;
-      max-width: 300px;
+      width: 300px;
       border-radius: 8px;
       border: none;
       outline: none;
@@ -55,12 +79,6 @@
 
     button:hover {
       background: #00b7cc;
-    }
-
-    .info {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #aaa;
     }
 
     #result {
@@ -85,37 +103,52 @@
       color: #ccc;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 13px;
-      color: #777;
+    .notice {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
     }
 
-    footer a {
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .footer a {
       color: #00e0ff;
       text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+
+  <!-- Üst bağlantılar -->
+  <div class="top-links">
+    <a href="https://chrome.google.com/webstore/detail/ion-wallet/ljkpeoclhjjcfjffldpgkogagphmacok" target="_blank">🧊 ION Wallet</a>
+    <a href="https://explorer.ice.io/testnet" target="_blank">🧪 Testnet Explorer</a>
+    <a href="https://explorer.ice.io" target="_blank">🔍 Mainnet Explorer</a>
+    <a href="https://bridge.ice.io" target="_blank">🌉 ION Bridge</a>
+  </div>
+
+  <!-- Sayfa içeriği -->
   <img src="https://ice.io/wp-content/uploads/2024/04/ion-favicon.png" alt="ION Logo" class="logo" />
   <h1>ION Testnet Faucet</h1>
   <input type="text" id="wallet" placeholder="ION Testnet Cüzdan Adresi" />
   <br />
   <button onclick="claim()">Claim</button>
-  <div class="info">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</div>
   <div id="result"></div>
+  <div class="notice">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</div>
 
-  <footer>
-    <p>🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a></p>
-    <p>🚀 Powered by <strong>IONTech</strong></p>
-    <p>❄️ Ice Open Network katkılarıyla</p>
-  </footer>
+  <!-- Alt bilgi -->
+  <div class="footer">
+    🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a><br/>
+    🚀 Powered by <strong>IONTech</strong><br/>
+    ❄️ Ice Open Network katkılarıyla
+  </div>
 
+  <!-- JavaScript -->
   <script>
     async function claim() {
       const wallet = document.getElementById("wallet").value.trim();
@@ -152,5 +185,6 @@
       }
     }
   </script>
+
 </body>
 </html>
