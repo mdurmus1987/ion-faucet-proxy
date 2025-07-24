@@ -177,7 +177,7 @@
       result.innerText = "⏳ İşleniyor...";
 
       try {
-        const response = await fetch("http://localhost:3000/claim", {
+        const response = await fetch("https://ion-faucet-api.onrender.com", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ address: wallet })
