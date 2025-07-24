@@ -160,7 +160,7 @@
       const match = message.match(/(\d+h\d+m)/);
       const formatted = match ? match[0].replace("h", " saat ").replace("m", " dakika") : "daha sonra";
       result.className = 'error';
-      result.innerHTML = `⚠️ Bu cüzdan zaten bugün talepte bulunmuş.<br>⏳ Lütfen <strong>${formatted}</strong> sonra tekrar deneyin.`;
+      result.innerHTML = `⚠️☃️ Bu cüzdan zaten bugün talepte bulunmuş.<br>⏳ Lütfen <strong>${formatted}</strong> sonra tekrar deneyin.`;
     }
 
     async function loadMarketData() {
