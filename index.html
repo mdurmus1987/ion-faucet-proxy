@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>ION Testnet Faucet</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       background: linear-gradient(to right, #1f1f2f, #151525);
@@ -15,33 +14,32 @@
       justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
-      padding-top: 80px;
+      padding-top: 20px;
     }
 
-    .top-links {
-      position: fixed;
-      top: 10px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      z-index: 100;
+    .nav {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
     }
 
-    .top-links a {
-      display: inline-block;
-      margin: 0 6px;
-      padding: 8px 14px;
-      background-color: #00e0ff;
-      color: #000;
+    .nav a {
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 13px;
-      transition: background 0.3s ease;
+      color: #fff;
+      background-color: #000;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: 0.3s ease;
     }
 
-    .top-links a:hover {
-      background-color: #00b7cc;
+    .nav a:hover {
+      background-color: #333;
     }
 
     .logo {
@@ -103,52 +101,52 @@
       color: #ccc;
     }
 
-    .notice {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #ccc;
-    }
-
     .footer {
       margin-top: 40px;
       text-align: center;
-      font-size: 13px;
-      color: #aaa;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
 
     .footer a {
       color: #00e0ff;
       text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <!-- Üst bağlantılar -->
-  <div class="top-links">
-    <a href="https://chrome.google.com/webstore/detail/ion-wallet/ljkpeoclhjjcfjffldpgkogagphmacok" target="_blank">🧊 ION Wallet</a>
-    <a href="https://explorer.ice.io/testnet" target="_blank">🧪 Testnet Explorer</a>
-    <a href="https://explorer.ice.io" target="_blank">🔍 Mainnet Explorer</a>
-    <a href="https://bridge.ice.io" target="_blank">🌉 ION Bridge</a>
+  <!-- Üst Menü -->
+  <div class="nav">
+    <a href="https://chromewebstore.google.com/detail/hfajfpbjlmembfdlhakjmefnbhjddofb?utm_source=item-share-cb" target="_blank">ION Wallet</a>
+    <a href="https://explorer.testnet.ice.io/" target="_blank">Testnet Explorer</a>
+    <a href="https://explorer.ice.io/" target="_blank">Mainnet Explorer</a>
+    <a href="https://bridge.ice.io/" target="_blank">ION Bridge</a>
   </div>
 
-  <!-- Sayfa içeriği -->
+  <!-- Logo -->
   <img src="https://ice.io/wp-content/uploads/2024/04/ion-favicon.png" alt="ION Logo" class="logo" />
+
+  <!-- Başlık -->
   <h1>ION Testnet Faucet</h1>
+
+  <!-- Giriş alanı ve buton -->
   <input type="text" id="wallet" placeholder="ION Testnet Cüzdan Adresi" />
   <br />
   <button onclick="claim()">Claim</button>
   <div id="result"></div>
-  <div class="notice">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</div>
 
-  <!-- Alt bilgi -->
+  <!-- Uyarı -->
+  <p style="margin-top: 15px; color: #ffcc00;">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir.</p>
+
+  <!-- Alt Bilgiler -->
   <div class="footer">
-    🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a><br/>
-    🚀 Powered by <strong>IONTech</strong><br/>
+    🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a><br />
+    🚀 Powered by <strong>IONTech</strong><br />
     ❄️ Ice Open Network katkılarıyla
   </div>
 
-  <!-- JavaScript -->
   <script>
     async function claim() {
       const wallet = document.getElementById("wallet").value.trim();
@@ -185,6 +183,5 @@
       }
     }
   </script>
-
 </body>
 </html>
