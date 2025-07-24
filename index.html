@@ -1,166 +1,208 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ION Testnet Faucet</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111427;
+      background: linear-gradient(to right, #1f1f2f, #151525);
       color: #fff;
-      text-align: center;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px 10px;
     }
 
-    .container {
-      max-width: 480px;
-      margin: auto;
-      background: #1e223a;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    .nav {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      max-width: 95%;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #000;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: 0.3s ease;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 20px;
+      width: 80px;
+      height: auto;
     }
 
     h1 {
-      color: #00ccff;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: #00e0ff;
+      text-align: center;
     }
 
     input {
-      width: 100%;
       padding: 10px;
+      width: 300px;
       border-radius: 8px;
       border: none;
-      margin-bottom: 15px;
+      outline: none;
       font-size: 16px;
+      margin-bottom: 15px;
     }
 
     button {
-      width: 100%;
-      padding: 12px;
-      background-color: #00ccff;
-      border: none;
-      color: #000;
-      font-weight: bold;
+      padding: 10px 30px;
       font-size: 16px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: 0.3s ease;
     }
 
     button:hover {
-      background-color: #00b0e0;
+      background: #00b7cc;
     }
 
-    .info, .market, .error, .success {
-      margin-top: 15px;
-      font-size: 15px;
-    }
-
-    .error {
-      background-color: #440000;
+    #result {
+      margin-top: 20px;
       padding: 10px;
-      border-radius: 8px;
-      color: #ff9999;
+      border-radius: 5px;
+      display: inline-block;
+      min-width: 280px;
     }
 
     .success {
-      background-color: #003300;
-      padding: 10px;
-      border-radius: 8px;
-      color: #90ee90;
+      background-color: #1b3824;
+      color: #3efc78;
     }
 
-    .menu a {
-      display: block;
-      background: #000;
-      color: #fff;
-      padding: 10px;
-      margin: 10px 0;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+    .error {
+      background-color: #3a1e1e;
+      color: #ff6565;
     }
 
-    footer {
+    .loading {
+      color: #ccc;
+    }
+
+    .footer {
       margin-top: 30px;
-      font-size: 13px;
-      color: #aaa;
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
     }
 
-    .footer-link {
-      color: #00ccff;
+    .footer a {
+      color: #00e0ff;
       text-decoration: none;
+    }
+
+    #market {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #a0dfff;
+    }
+
+    @media screen and (max-width: 480px) {
+      .nav a {
+        flex: 1 1 calc(50% - 10px);
+        font-size: 13px;
+        padding: 10px 8px;
+      }
+
+      input {
+        width: 90% !important;
+      }
+
+      button {
+        width: 60%;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .logo {
+        width: 60px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="nav">
+    <a href="https://chromewebstore.google.com/detail/hfajfpbjlmembfdlhakjmefnbhjddofb?utm_source=item-share-cb" target="_blank">ION Wallet</a>
+    <a href="https://explorer.testnet.ice.io/" target="_blank">Testnet Explorer</a>
+    <a href="https://explorer.ice.io/" target="_blank">Mainnet Explorer</a>
+    <a href="https://bridge.ice.io/" target="_blank">ION Bridge</a>
+  </div>
 
-  <div class="container">
-    <div class="menu">
-      <a href="https://chromewebstore.google.com/detail/ion-wallet/hfajfpbjlmembfdlhakjmefnbhjddofb" target="_blank">ION Wallet</a>
-      <a href="https://explorer.testnet.ice.io" target="_blank">Testnet Explorer</a>
-      <a href="https://explorer.ice.io" target="_blank">Mainnet Explorer</a>
-      <a href="https://bridge.ice.io" target="_blank">ION Bridge</a>
-    </div>
+  <img src="https://ice.io/wp-content/uploads/2024/04/ion-favicon.png" alt="ION Logo" class="logo" />
+  <h1>ION Testnet Faucet</h1>
+  <input type="text" id="wallet" placeholder="ION Testnet Cüzdan Adresi" />
+  <br />
+  <button onclick="claim()">Claim</button>
+  <div id="result"></div>
+  <p style="margin-top: 10px; color: #ffcc00;">⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir. Test coinlerinin değeri yoktur. Test amaçlı kullanım içindir.</p>
 
-    <img src="https://ice.io/wp-content/uploads/2024/04/ion-favicon.png" alt="ION Logo" style="width:80px; margin: 20px 0;">
+  <div id="market">📡 Piyasa verileri yükleniyor...</div>
 
-    <h1>ION Testnet Faucet</h1>
-
-    <input id="address" placeholder="ION cüzdan adresinizi girin" />
-    <button onclick="claim()">Claim</button>
-
-    <div id="result" class="info"></div>
-
-    <div class="info" style="color: gold;">
-      ⚠️ ION Testnet coinleri her 24 saatte bir talep edilebilir. Test coinlerinin değeri yoktur. Test amaçlı kullanım içindir.
-    </div>
-
-    <div id="market" class="market">📡 Piyasa verileri alınıyor...</div>
-
-    <footer>
-      <p>🔗 <a href="https://twitter.com/BurnLuncNew" class="footer-link" target="_blank">@BurnLuncNew</a></p>
-      <p>🚀 Powered by <strong>IONTech</strong></p>
-      <p>❄️ Ice Open Network katkılarıyla</p>
-    </footer>
+  <div class="footer">
+    <p>🔗 <a href="https://x.com/BurnLuncNew" target="_blank">@BurnLuncNew</a></p>
+    <p>🚀 Powered by <strong>IONTech</strong></p>
+    <p>❄️ Ice Open Network katkılarıyla</p>
   </div>
 
   <script>
     async function claim() {
-      const addr = document.getElementById("address").value;
+      const wallet = document.getElementById("wallet").value.trim();
       const result = document.getElementById("result");
-      result.innerText = "⏳ İşlem yapılıyor...";
-      result.className = "info";
+      result.className = 'loading';
+
+      if (!wallet) {
+        result.className = 'error';
+        result.innerText = "⚠️ Lütfen geçerli bir cüzdan adresi girin.";
+        return;
+      }
+
+      result.innerText = "⏳ İşleniyor...";
 
       try {
-        const res = await fetch("https://faucet.onrender.com/claim", {
+        const response = await fetch("https://ion-faucet-api.onrender.com/claim", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ address: addr })
+          body: JSON.stringify({ address: wallet })
         });
 
-        const data = await res.json();
+        const data = await response.json();
 
-        if (res.ok && data.success) {
-          result.className = "success";
+        if (data.message && data.message.includes("received")) {
+          result.className = 'success';
           result.innerText = "✅ 10 ION cüzdana gönderildi!";
         } else {
-          showCooldownError(data.message || "Bilinmeyen hata.");
+          result.className = 'error';
+          result.innerText = "❌ Hata: " + (data.message || JSON.stringify(data));
         }
       } catch (err) {
-        result.className = "error";
+        result.className = 'error';
         result.innerText = "❌ Sunucu hatası: " + err.message;
       }
-    }
-
-    function showCooldownError(message) {
-      const result = document.getElementById("result");
-      const match = message.match(/(\d+h\d+m)/);
-      const formatted = match ? match[0].replace("h", " saat ").replace("m", " dakika") : "daha sonra";
-      result.className = 'error';
-      result.innerHTML = `⚠️☃️ Bu cüzdan zaten bugün talepte bulunmuş.<br>⏳ Lütfen <strong>${formatted}</strong> sonra tekrar deneyin.`;
     }
 
     async function loadMarketData() {
@@ -171,12 +213,7 @@
         const price = data.market_data.current_price.usd;
         const supply = data.market_data.circulating_supply;
         const total = data.market_data.total_supply;
-
-        el.innerHTML = `
-          💰 Fiyat: $${price.toFixed(7)}<br>
-          🔄 Dolaşım: ${Math.round(supply).toLocaleString()}<br>
-          🧊 Toplam Arz: ${Math.round(total).toLocaleString()}
-        `;
+        el.innerText = `💰 Fiyat: $${price} | 🔄 Dolaşım: ${Math.round(supply).toLocaleString()} | 🧊 Toplam Arz: ${Math.round(total).toLocaleString()}`;
       } catch {
         el.innerText = "📡 Piyasa verileri alınamadı.";
       }
@@ -185,4 +222,4 @@
     loadMarketData();
   </script>
 </body>
-  </html>
+</html>
